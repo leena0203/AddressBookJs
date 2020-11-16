@@ -1,3 +1,4 @@
+var prompt = require('prompt - sync')();
 class Contact {
     fName;
     lName;
@@ -85,8 +86,29 @@ class Contact {
         }
         else throw 'Invalid Email';
     }
+    createContact() {
+        this.fName = prompt('Enter the first name');
+        this.lName = prompt('Enter the last name');
+        this.address = prompt('Enter the address');
+        this.city = prompt('Enter the city');
+        this.state = prompt('Enter the state');
+        this.zip = prompt('Enter the zipcode');
+        this.phoneNo = prompt('Enter the phone number');
+        this.email = prompt('Enter the email');
+        let contact = new Contact(this.fName, this.lastName, this.address, this.city, this.state, this.zip,
+            this.phoneNo, this.email);
+        return contact;
+
+    }
     toString() {
         return '\nName : ' + this.fName + ' ' + this.lName + '\nAddress : ' + this.address + '\nCity : ' + this.city +
             '\nState : ' + this.state + '\nZip : ' + this.zip + '\nphoneNo : ' + this.phoneNo + '\nEmail : ' + this.email;
     }
 }
+var addressBook = new Array();
+function addContact(contact) {
+    addressBook.push(contact);
+}
+let contact = new Contact();
+addContact(contact.createContact());
+console.log(addressBook);
