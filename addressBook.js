@@ -108,6 +108,11 @@ class Contact {
 var addressBook = new Array();
 function addContact(contact) {
     addressBook.push(contact);
+    if (!checkContact(contact.firstName + contact.lastName)) {
+        addressBook.push(contact);
+    }else{
+        console.log('Already exists');
+    }
 }
 let contact = new Contact();
 addContact(contact.createContact());
@@ -140,4 +145,12 @@ function deleteContact(name) {
 //UC6
 function countEntries() {
     return addressBook.length;
+}
+//UC7
+function checkDuplicate(name) {
+    addressBook.forEach(c => {
+        if (c.fName + c.lName == name) {
+            return false;
+        }
+    });
 }
