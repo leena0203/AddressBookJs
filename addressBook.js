@@ -137,3 +137,7 @@ function editDetails(contact) {
 function deleteContact(name) {
     addressBook.filter(c => (c.fName + c.lName == name));
 } 
+//UC6
+function countEntries() {
+    return addressBook.length;
+}
