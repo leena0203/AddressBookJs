@@ -112,3 +112,24 @@ function addContact(contact) {
 let contact = new Contact();
 addContact(contact.createContact());
 console.log(addressBook);
+//UC4
+function editContact(name) {
+    addressBook.filter(c => (c.fName + c.lName == name)).forEach(c => editDetails(c));
+}
+function editDetails(contact) {
+    var choice = parseInt(prompt('Enter what u wish to do\n1.Update phoneNumber\n2.Update Address\n3.Update email'));
+    switch (choice) {
+        case 1:
+            var phone = prompt('Enter new phone number');
+            contact.phoneNo = phone;
+            break;
+        case 2:
+            var address = prompt('Enter new address');
+            contact.address = address;
+            break;
+        case 3:
+            var email = prompt('Enter new email');
+            contact.email = email;
+            break;
+    }
+}
