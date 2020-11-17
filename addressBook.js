@@ -154,3 +154,10 @@ function checkDuplicate(name) {
         }
     });
 }
+//UC8
+function searchInCity(city, name) {
+    return addressBook.filter(c => (c.city == city)).filter(c => (c.fName + c.lName == name));
+}
+function searchInState(state, name) {
+    return addressBook.filter(c => (c.state == state)).filter(c => (c.fName + c.lName == name));
+}
