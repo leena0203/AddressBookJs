@@ -1,4 +1,4 @@
-var prompt = require('prompt - sync')();
+var prompt = require('prompt-sync')();
 class Contact {
     fName;
     lName;
@@ -95,7 +95,7 @@ class Contact {
         this.zip = prompt('Enter the zipcode');
         this.phoneNo = prompt('Enter the phone number');
         this.email = prompt('Enter the email');
-        let contact = new Contact(this.fName, this.lastName, this.address, this.city, this.state, this.zip,
+        let contact = new Contact(this.fName, this.lName, this.address, this.city, this.state, this.zip,
             this.phoneNo, this.email);
         return contact;
 
@@ -108,7 +108,7 @@ class Contact {
 var addressBook = new Array();
 function addContact(contact) {
     addressBook.push(contact);
-    if (!checkContact(contact.firstName + contact.lastName)) {
+    if (!checkDuplicate(contact.fName + contact.lName)) {
         addressBook.push(contact);
     }else{
         console.log('Already exists');
@@ -122,7 +122,7 @@ function editContact(name) {
     addressBook.filter(c => (c.fName + c.lName == name)).forEach(c => editDetails(c));
 }
 function editDetails(contact) {
-    var choice = parseInt(prompt('Enter what u wish to do\n1.Update phoneNumber\n2.Update Address\n3.Update email'));
+    var choice = parseInt(prompt('Enter what u wish to do\n1.Update phoneNumber\n2.Update Address\n3.Update email\n4.Exit'));
     switch (choice) {
         case 1:
             var phone = prompt('Enter new phone number');
@@ -136,21 +136,39 @@ function editDetails(contact) {
             var email = prompt('Enter new email');
             contact.email = email;
             break;
+            case 4:
+                    return;
     }
 }
+let editName = prompt("Enter person's full name to edit contact : ");
+editContact(editName);
+console.log(addressBook);
 //UC5
 function deleteContact(name) {
-    addressBook.filter(c => (c.fName + c.lName == name));
-} 
+    let i = 0;
+    addressBook.forEach(contact => {
+        if ((contact.fName + " " + contact.lName) == (name)) {
+            addressBook.splice(i, 1);
+            addressBook.indexOf()
+        }
+        i++;
+    });
+}
+
+let deleteName = prompt("Enter the person's full name to delete : ");
+deleteContact(deleteName);
+console.log(addressBook);
+
 //UC6
 function countEntries() {
     return addressBook.length;
 }
+console.log("Number of contacts in array : " + countEntries());
 //UC7
 function checkDuplicate(name) {
     addressBook.forEach(c => {
         if (c.fName + c.lName == name) {
-            return false;
+            return true;
         }
     });
 }
@@ -158,9 +176,17 @@ function checkDuplicate(name) {
 function searchInCity(city, name) {
     return addressBook.filter(c => (c.city == city)).filter(c => (c.fName + c.lName == name));
 }
+let nameToSearch = prompt("Enter name to search : ");
+let cityToSearch = prompt("Enter city name from which name to search: ");
+let personByCity = searchInCity(nameToSearch, cityToSearch);
+console.log("Person in " + cityToSearch + " is: " + personByCity);
 function searchInState(state, name) {
     return addressBook.filter(c => (c.state == state)).filter(c => (c.fName + c.lName == name));
 }
+nameToSearch = prompt("Enter name to search : ");
+let stateToSearch = prompt("Enter state name from which name to search: ");
+let personByState = searchInState(nameToSearch, stateToSearch);
+console.log("Person in " + stateToSearch + " is: " + personByState);
 //UC9
 function getContactByCity(city) {
     addressBook.filter(c => (c.city == city)).forEach(c => console.log(c.fName + ' ' + c.lName));

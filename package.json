@@ -1,0 +1,24 @@
+{
+  "name": "addressbookjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "addressBook.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leena0203/AddressBookJs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leena0203/AddressBookJs/issues"
+  },
+  "homepage": "https://github.com/leena0203/AddressBookJs#readme",
+  "dependencies": {
+    "install": "^0.13.0",
+    "npm": "^6.14.8",
+    "prompt-sync": "^4.2.0"
+  }
+}
