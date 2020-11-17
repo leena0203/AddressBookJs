@@ -161,3 +161,10 @@ function searchInCity(city, name) {
 function searchInState(state, name) {
     return addressBook.filter(c => (c.state == state)).filter(c => (c.fName + c.lName == name));
 }
+//UC9
+function getContactByCity(city) {
+    addressBook.filter(c => (c.city == city)).forEach(c => console.log(c.fName + ' ' + c.lName));
+}
+function getContactByState(state) {
+    addressBook.filter(c => (c.state == state)).forEach(c => console.log(c.fName + ' ' + c.lName));
+}
