@@ -177,3 +177,17 @@ function getContactSizeByStae(state) {
     let list = getContactByState(state);
     return list.length;
 } 
+//UC11
+function compare(contact1, contact2) {
+    let a = contact1.fName.toUpperCase();
+    let b = contact2.fName.toUpperCase();
+    if (a > b) {
+        return 1;
+    }
+    else {
+        return -1;
+    }
+}
+function sortByName() {
+    let sortedByName = addressBook.sort(compare);
+} 
