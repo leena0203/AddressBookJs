@@ -168,3 +168,12 @@ function getContactByCity(city) {
 function getContactByState(state) {
     addressBook.filter(c => (c.state == state)).forEach(c => console.log(c.fName + ' ' + c.lName));
 }
+//UC10
+function getContactSizeByCity(city) {
+    let list = getContactByCity(city);
+    return list.length;
+}
+function getContactSizeByStae(state) {
+    let list = getContactByState(state);
+    return list.length;
+} 
